@@ -50,7 +50,7 @@ export const queryNodesByComponentPath = (
     }
   }
   return matchComponent(node, path[0])
-    ? node.children.reduce((buf: TreeNode[], child) => {
+    ? node.children.reduce((buf, child) => {
         return buf.concat(queryNodesByComponentPath(child, path.slice(1)));
       }, [])
     : [];
@@ -59,7 +59,7 @@ export const queryNodesByComponentPath = (
 export const findNodeByComponentPath = (
   node: TreeNode,
   path: ComponentNameMatcher[],
-): TreeNode | undefined => {
+): TreeNode => {
   if (path?.length === 0) return;
   if (path?.length === 1) {
     if (matchComponent(node, path[0])) {
@@ -90,18 +90,18 @@ export const matchArrayItemsNode = (node: TreeNode) => {
 
 export const createNodeId = (designer: Engine, id: string) => {
   return {
-    [designer.props.nodeIdAttrName as string]: id,
+    [designer.props.nodeIdAttrName]: id,
   };
 };
 
 export const createEnsureTypeItemsNode = (type: string) => (node: TreeNode) => {
   const objectNode = node.children.find(
-    (child) => (child.props || {})['type'] === type,
+    (child) => child.props['type'] === type,
   );
   if (
     objectNode &&
     objectNode.designerProps.droppable &&
-    !(objectNode.props || {})['x-component']
+    !objectNode.props['x-component']
   ) {
     return objectNode;
   } else {

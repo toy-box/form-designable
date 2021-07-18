@@ -1,11 +1,12 @@
-import { ISchema, connect, mapProps, JSXComponent } from '@formily/react';
-import { IFieldOption, MetaValueType } from '@toy-box/meta-schema';
+import React from 'react';
+import { ISchema, connect, mapProps } from '@formily/react';
+import { IFieldMeta, IFieldOption, MetaValueType } from '@toy-box/meta-schema';
 import { pick, clone } from '@toy-box/toybox-shared';
 import { FieldModeType } from '@toy-box/meta-components';
 import { TreeNode } from '@designable/core';
 import { IMetaSchema } from './types';
 
-export const makeComponent = (target: JSXComponent) => {
+export const makeComponent = (target) => {
   return connect(
     target,
     mapProps((props, field) => {
@@ -119,14 +120,14 @@ export const convertTreeNodesToSchema = (
     if (node !== root) {
       Object.assign(schema, clone(node.props));
     }
-    // schema['_designableId'] = node.id
+    schema['_designableId'] = node.id;
     if (schema.type === 'array') {
       if (node.children[0]) {
         if (
           node.children[0].componentName === realOptions.designableFieldName
         ) {
           schema.items = createSchema(node.children[0]);
-          // schema['x-index'] = 0
+          schema['x-index'] = 0;
         }
       }
       node.children.slice(1).forEach((child, index) => {
@@ -134,7 +135,7 @@ export const convertTreeNodesToSchema = (
         const key = child.props?.key || child.id;
         schema.properties = schema.properties || {};
         schema.properties[key] = createSchema(child);
-        // schema.properties[key]['x-index'] = index
+        schema.properties[key]['x-index'] = index;
       });
     } else {
       node.children.forEach((child, index) => {
@@ -142,7 +143,7 @@ export const convertTreeNodesToSchema = (
         const key = child.props?.key || child.id;
         schema.properties = schema.properties || {};
         schema.properties[key] = createSchema(child);
-        // schema.properties[key]['x-index'] = index
+        schema.properties[key]['x-index'] = index;
       });
     }
     return schema;
