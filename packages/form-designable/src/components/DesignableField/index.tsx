@@ -170,8 +170,6 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
           },
           'x-index': 11,
         },
-        // 'x-decorator-props':
-        //   decoratorSchema && TabSchema('x-decorator-props', decoratorSchema),
       },
     };
 

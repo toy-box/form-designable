@@ -3,6 +3,11 @@ import { ISchema } from '@formily/react';
 export const FieldString: ISchema = {
   type: 'object',
   properties: {
+    defaultValue: {
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+      'x-index': 3,
+    },
     format: {
       type: 'string',
       enum: [

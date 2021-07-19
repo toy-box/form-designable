@@ -14,15 +14,15 @@ export const FormTab: ISchema & { TabPane?: ISchema } = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
     },
-    size: {
-      type: 'string',
-      enum: ['large', 'small', 'default', null],
-      'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-component-props': {
-        defaultValue: 'default',
-      },
-    },
+    // size: {
+    //   type: 'string',
+    //   enum: ['large', 'small', 'default', null],
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Select',
+    //   'x-component-props': {
+    //     defaultValue: 'default',
+    //   },
+    // },
     type: {
       type: 'string',
       enum: GlobalRegistry.getDesignerMessage('settings.tabsTypeEnum'),

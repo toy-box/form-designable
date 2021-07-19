@@ -38,15 +38,15 @@ export const FormLayout: ISchema = {
     //     defaultValue: 'loose',
     //   },
     // },
-    size: {
-      type: 'string',
-      enum: ['large', 'small', 'default', null],
-      'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-component-props': {
-        defaultValue: 'default',
-      },
-    },
+    // size: {
+    //   type: 'string',
+    //   enum: ['large', 'small', 'default', null],
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Select',
+    //   'x-component-props': {
+    //     defaultValue: 'default',
+    //   },
+    // },
     layout: {
       type: 'string',
       enum: ['vertical', 'horizontal', 'inline', null],

@@ -30,5 +30,6 @@ export * from './FieldDate';
 export * from './FieldDatetime';
 export * from './FieldBoolean';
 export * from './FieldNumber';
+export * from './FieldPercent';
 export * from './FieldSingleOption';
 export * from './Segment';

@@ -26,25 +26,5 @@ export const FieldNumber: ISchema = {
       'x-component': 'NumberPicker',
       'x-index': 5,
     },
-    'x-display': {
-      type: 'string',
-      enum: ['visible', 'hidden', 'none', ''],
-      'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-component-props': {
-        defaultValue: 'visible',
-      },
-      'x-index': 10,
-    },
-    'x-pattern': {
-      type: 'string',
-      enum: ['editable', 'disabled', 'readOnly', 'readPretty', ''],
-      'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-component-props': {
-        defaultValue: 'editable',
-      },
-      'x-index': 11,
-    },
   },
 };

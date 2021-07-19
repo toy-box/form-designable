@@ -17,10 +17,12 @@ export const FieldSingleOption: ISchema = {
           },
         },
       ],
+      'x-index': 4,
     },
     options: {
       'x-decorator': 'FormItem',
       'x-component': 'DataSourceSetter',
+      'x-index': 5,
     },
   },
 };

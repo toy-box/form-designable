@@ -427,6 +427,7 @@ export default {
       FieldString: '文本',
       FieldText: '大段文本',
       FieldNumber: '数字',
+      FieldPercent: '百分比',
       FieldBoolean: '是非',
       FieldDate: '日期',
       FieldDatetime: '日期时间',

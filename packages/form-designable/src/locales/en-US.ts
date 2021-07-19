@@ -433,6 +433,7 @@ export default {
       FieldString: 'String',
       FieldText: 'Text',
       FieldNumber: 'Number',
+      FieldPercent: 'Percent',
       FieldBoolean: 'Boolean',
       FieldDate: 'Date',
       FieldDatetime: 'Datetime',

@@ -142,6 +142,15 @@ GlobalDragSource.appendSourcesByGroup('inputs', [
       'x-component': 'FieldNumber',
     },
   },
+  {
+    componentName: 'DesignableField',
+    props: {
+      type: 'percent',
+      name: 'Percent',
+      'x-decorator': 'FormItem',
+      'x-component': 'FieldPercent',
+    },
+  },
   // {
   //   componentName: 'DesignableField',
   //   props: {
