@@ -29,8 +29,8 @@
     flex-grow: 0;
     flex-shrink: 0;
     justify-content: space-between;
-    background: var(--dn-main-panel-header-bg-color);
-    border-bottom: 1px solid var(--dn-main-panel-header-border-color);
+    background: @dn-main-panel-header-bg-color;
+    border-bottom: 1px solid @dn-main-panel-header-border-color;
     padding: 4px;
 
     &-logo {
@@ -65,13 +65,13 @@
   &-tabs {
     display: flex;
     flex-direction: column;
-    background-color: var(--dn-composite-panel-tabs-bg-color);
-    border-right: 1px solid var(--dn-composite-panel-tabs-content-border-color);
+    background-color: @dn-composite-panel-tabs-bg-color;
+    border-right: 1px solid @dn-composite-panel-tabs-content-border-color;
     z-index: 2;
     position: relative;
 
     &-pane {
-      color: var(--dn-composite-panel-tabs-color);
+      color: @dn-composite-panel-tabs-color;
       height: 48px;
       width: 48px;
       display: flex;
@@ -82,11 +82,11 @@
       font-size: 20px;
 
       &:hover {
-        color: var(--dn-composite-panel-tabs-hover-color);
+        color: @dn-composite-panel-tabs-hover-color;
       }
 
       &.active {
-        color: var(--dn-composite-panel-tabs-hover-color);
+        color: @dn-composite-panel-tabs-hover-color;
 
         &::after {
           position: absolute;
@@ -96,16 +96,15 @@
           content: '';
           width: 2px;
           height: 100%;
-          background-color: var(--dn-composite-panel-tabs-hover-color);
+          background-color: @dn-composite-panel-tabs-hover-color;
         }
       }
     }
 
     &-content {
       width: 300px;
-      border-right: 1px solid
-        var(--dn-composite-panel-tabs-content-border-color);
-      background: var(--dn-composite-panel-tabs-content-bg-color);
+      border-right: 1px solid @dn-composite-panel-tabs-content-border-color;
+      background: @dn-composite-panel-tabs-content-bg-color;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -123,11 +122,10 @@
 
     &-header {
       padding: 14px 7px;
-      color: var(--dn-composite-panel-tabs-header-color);
+      color: @dn-composite-panel-tabs-header-color;
       line-height: 18px;
       font-size: 16px;
-      border-bottom: 1px solid
-        var(--dn-composite-panel-tabs-content-border-color);
+      border-bottom: 1px solid @dn-composite-panel-tabs-content-border-color;
       display: flex;
       justify-content: space-between;
 
@@ -181,7 +179,7 @@
   padding: 4px;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: var(--dn-workspace-panel-bg-color);
+  background-color: @dn-workspace-panel-bg-color;
   position: relative;
   z-index: 1;
 
@@ -202,8 +200,8 @@
   flex-direction: column;
   z-index: 2;
   width: 300px;
-  background: var(--dn-composite-panel-tabs-content-bg-color);
-  border-left: 1px solid var(--dn-composite-panel-tabs-content-border-color);
+  background: @dn-composite-panel-tabs-content-bg-color;
+  border-left: 1px solid @dn-composite-panel-tabs-content-border-color;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -222,10 +220,10 @@
 
   &-header {
     padding: 14px 7px;
-    color: var(--dn-composite-panel-tabs-header-color);
+    color: @dn-composite-panel-tabs-header-color;
     line-height: 18px;
     font-size: 16px;
-    border-bottom: 1px solid var(--dn-composite-panel-tabs-content-border-color);
+    border-bottom: 1px solid @dn-composite-panel-tabs-content-border-color;
     display: flex;
     justify-content: space-between;
 
@@ -276,8 +274,8 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    background: var(--dn-composite-panel-tabs-content-bg-color);
-    border: 1px solid var(--dn-composite-panel-tabs-content-border-color);
+    background: @dn-composite-panel-tabs-content-bg-color;
+    border: 1px solid @dn-composite-panel-tabs-content-border-color;
     box-shadow: 0 0 6px rgb(0 0 0 / 10%);
     border-radius: 3px;
     display: flex;

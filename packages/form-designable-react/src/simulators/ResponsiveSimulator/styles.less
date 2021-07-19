@@ -1,7 +1,7 @@
 @import '../../variables.less';
 
 .@{prefix-cls}-responsive-simulator {
-  background-color: var(--dn-responsive-simulator-bg-color);
+  background-color: @dn-responsive-simulator-bg-color;
 }
 
 .@{prefix-cls}-resize-handle {
@@ -11,8 +11,8 @@
   user-select: none;
   bottom: 0;
   z-index: 10;
-  background: var(--dn-resize-handle-bg-color);
-  color: var(--dn-resize-handle-color);
+  background: @dn-resize-handle-bg-color;
+  color: @dn-resize-handle-color;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@
   }
 
   &:hover {
-    background: var(--dn-resize-handle-hover-bg-color);
-    color: var(--dn-resize-handle-hover-color);
+    background: @dn-resize-handle-hover-bg-color;
+    color: @dn-resize-handle-hover-color;
   }
 }
