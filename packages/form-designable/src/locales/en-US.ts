@@ -27,6 +27,7 @@ const FormLayoutLocale = {
   wrapperWrap: 'Wrapper Wrap',
   labelWidth: 'Label Width',
   wrapperWidth: 'Wrapper Width',
+  colon: 'Colon',
   fullness: 'Fullness',
   inset: 'Inset',
   shallow: 'Shallow',

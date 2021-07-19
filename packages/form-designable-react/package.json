@@ -20,6 +20,7 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 || >=17.0.0",
     "@types/react-dom": ">=16.8.0 || >=17.0.0",
+    "@airclass/icons": "^4.3.4",
     "antd": "^4.15.4",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",

@@ -11,7 +11,7 @@ import {
   Schema,
   ISchema,
 } from '@formily/react';
-import { FormTab } from '@formily/antd';
+import { FormTab, FormCollapse } from '@formily/antd';
 import { clone } from '@formily/shared';
 import { FormItemSwitcher } from '../FormItemSwitcher';
 import { DesignableObject } from '../DesignableObject';
@@ -32,6 +32,7 @@ function pick(props: any, keys: string[] = []) {
 export const createDesignableField = (options: IDesignableFieldProps) => {
   const realOptions = createOptions(options);
   const tabs = {};
+  const collapses = {};
   const getFieldPropsSchema = (node: TreeNode): ISchema => {
     const decorator = node.props['x-decorator'];
     const component = node.props['x-component'];
@@ -43,6 +44,43 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
       component &&
       (FormPath.getIn(realOptions.componentsPropsSchema, component) ||
         FormPath.getIn(defaultSchemas, component));
+    const CollapseSchema = (key: string, schema: ISchema) => {
+      collapses[key] = collapses[key] || FormCollapse.createFormCollapse();
+      return {
+        type: 'object',
+        properties: {
+          collapse: {
+            type: 'void',
+            'x-component': 'FormCollapse',
+            'x-components-props': {
+              formCollapse: collapses[key],
+            },
+            properties: {
+              panelProperty: {
+                type: 'void',
+                'x-component': 'FormCollapse.CollapsePanel',
+                'x-component-props': {
+                  header: GlobalRegistry.getDesignerMessage(
+                    `settings.${key}.tab_property`,
+                  ),
+                },
+                properties: schema.properties,
+              },
+              panelStyle: {
+                type: 'void',
+                'x-component': 'FormCollapse.CollapsePanel',
+                'x-component-props': {
+                  header: GlobalRegistry.getDesignerMessage(
+                    `settings.${key}.tab_style`,
+                  ),
+                },
+                properties: defaultSchemas.CSSStyle,
+              },
+            },
+          },
+        },
+      };
+    };
     const TabSchema = (key: string, schema: ISchema) => {
       tabs[key] = tabs[key] || FormTab.createFormTab();
       return {
@@ -132,8 +170,6 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
           },
           'x-index': 11,
         },
-        // 'x-component-props':
-        //   componentSchema && TabSchema('x-component-props', componentSchema),
         // 'x-decorator-props':
         //   decoratorSchema && TabSchema('x-decorator-props', decoratorSchema),
       },
@@ -142,8 +178,8 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
     const container = {
       type: 'object',
       properties: {
-        'x-decorator-props':
-          decoratorSchema && TabSchema('x-decorator-props', decoratorSchema),
+        'x-component-props':
+          componentSchema && TabSchema('x-component-props', componentSchema),
       },
     };
 
@@ -152,32 +188,17 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
         Object.assign(base.properties, container.properties, {
           'x-reactions': {
             'x-decorator': 'FormItem',
-            'x-index': 5,
-            // 'x-component': 'ReactionsSetter',
+            'x-index': 10,
+            'x-component': 'ReactionsSetter',
           },
         });
       }
       if (!includesComponent(node, realOptions.dropFormItemComponents)) {
-        Object.assign(base.properties, container.properties, {
-          'x-decorator': {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': FormItemSwitcher,
-            'x-index': 10,
-            'x-reactions': {
-              target: '*(title,description)',
-              fulfill: {
-                state: {
-                  hidden: '{{$self.value !== "FormItem"}}',
-                },
-              },
-            },
-          },
-        });
-      } else {
-        // delete base.properties.title
-        delete base.properties.description;
+        Object.assign(base.properties, container.properties);
       }
+      delete base.properties.name;
+      delete base.properties.defaultValue;
+      delete base.properties.description;
     } else {
       if (!includesComponent(node, realOptions.dropReactionComponents)) {
         Object.assign(base.properties, componentSchema?.properties || {}, {

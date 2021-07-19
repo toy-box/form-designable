@@ -3,13 +3,6 @@ import { ISchema } from '@formily/react';
 export const FieldString: ISchema = {
   type: 'object',
   properties: {
-    defaultValue: {
-      type: 'string',
-      maxLength: 255,
-      'x-decorator': 'FormItem',
-      'x-component': 'Input',
-      'x-index': 3,
-    },
     format: {
       type: 'string',
       enum: [
@@ -28,14 +21,6 @@ export const FieldString: ISchema = {
         allowClear: true,
       },
       'x-index': 4,
-    },
-    maxLength: {
-      type: 'number',
-      minimum: 1,
-      maximum: 255,
-      'x-decorator': 'FormItem',
-      'x-component': 'NumberPicker',
-      'x-index': 5,
     },
   },
 };

@@ -24,6 +24,7 @@ export const DragSourceWidget: React.FC<IDragSourceWidgetProps> = observer(
     const designer = useDesigner();
     const [expand, setExpand] = useState(props.defaultExpand);
     const renderNode = (node: TreeNode) => {
+      console.log('node?.designerProps', node, node?.designerProps);
       return (
         <div
           className={prefix + '-item'}

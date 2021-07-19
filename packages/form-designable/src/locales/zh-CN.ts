@@ -21,6 +21,7 @@ const FormLayoutLocale = {
   wrapperWrap: '组件换行',
   labelWidth: '标签宽度',
   wrapperWidth: '组件宽度',
+  colon: '冒号',
   fullness: '组件占满',
   inset: '内联布局',
   shallow: '是否浅传递',
