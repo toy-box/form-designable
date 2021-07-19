@@ -5,10 +5,10 @@
 Install dependencies,
 
 ```bash
-$ npm i
+$ npm run bootstrap
 ```
 
-Start the dev server,
+Preview documentation,
 
 ```bash
 $ npm start
@@ -24,4 +24,11 @@ Build library via `father-build`,
 
 ```bash
 $ npm run build
+```
+
+Play Ground
+
+```bash
+$ cd packages/form-designable
+$ npm run start
 ```
