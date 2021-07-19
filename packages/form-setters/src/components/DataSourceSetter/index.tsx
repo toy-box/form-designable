@@ -3,7 +3,11 @@ import cls from 'classnames';
 import { Modal, Button } from 'antd';
 import { observable } from '@formily/reactive';
 import { observer } from '@formily/reactive-react';
-import { usePrefix, useTheme, TextWidget } from '@designable/react';
+import {
+  usePrefix,
+  useTheme,
+  TextWidget,
+} from '@toy-box/form-designable-react';
 import { DataSettingPanel } from './DataSettingPanel';
 import { TreePanel } from './TreePanel';
 import { transformDataToValue, transformValueToData } from './shared';

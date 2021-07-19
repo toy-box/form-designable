@@ -16,8 +16,8 @@ import {
   ViewPanel,
   SettingsPanel,
   ComponentTreeWidget,
-} from '@designable/react';
-import { SettingsForm } from '@designable/react-settings-form';
+} from '@toy-box/form-designable-react';
+import { SettingsForm } from '@toy-box/form-settings';
 import { createDesigner, GlobalRegistry } from '@designable/core';
 import { createDesignableField, createDesignableForm } from '../src';
 import {

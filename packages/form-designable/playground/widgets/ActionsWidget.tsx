@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Space, Button, Radio } from 'antd';
-import { TextWidget } from '@designable/react';
+import { TextWidget } from '@toy-box/form-designable-react';
 import { GlobalRegistry } from '@designable/core';
 import { observer } from '@formily/react';
 

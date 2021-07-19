@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNodeIdProps } from '@designable/react';
+import { useNodeIdProps } from '@toy-box/form-designable-react';
 import { Droppable } from '../Droppable';
 import './styles.less';
 

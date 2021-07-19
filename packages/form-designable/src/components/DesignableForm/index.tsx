@@ -3,7 +3,7 @@ import { IDesignerProps, GlobalRegistry } from '@designable/core';
 import { createForm } from '@formily/core';
 import { Form, IFormLayoutProps } from '@formily/antd';
 import { observer } from '@formily/react';
-import { usePrefix } from '@designable/react';
+import { usePrefix } from '@toy-box/form-designable-react';
 import { Form as FormPropsSchema } from '../../schemas';
 import './styles.less';
 

@@ -1,7 +1,12 @@
 import * as fs from 'fs';
 import externalGlobals from 'rollup-plugin-external-globals';
 
-const basicPkgs = ['form-designable-items', 'form-setters', 'form-designable'];
+const basicPkgs = [
+  'form-designable-react',
+  'form-settings',
+  'form-setters',
+  'form-designable',
+];
 const packages = fs
   .readdirSync('./packages')
   .filter((pkg) => !basicPkgs.includes(pkg));

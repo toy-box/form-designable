@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TextWidget, usePrefix } from '@designable/react';
+import { TextWidget, usePrefix } from '@toy-box/form-designable-react';
 import { Menu } from 'antd';
-import { MonacoInput } from '@designable/react-settings-form';
+import { MonacoInput } from '@toy-box/form-settings';
 import { isPlainObj, reduce } from '@formily/shared';
 import { FieldProperties } from './properties';
 export interface IFieldProperty {

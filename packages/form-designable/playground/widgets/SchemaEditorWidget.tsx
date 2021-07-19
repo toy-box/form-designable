@@ -1,6 +1,6 @@
 import React from 'react';
 import { TreeNode, ITreeNode } from '@designable/core';
-import { MonacoInput } from '@designable/react-settings-form';
+import { MonacoInput } from '@toy-box/form-settings';
 import { convertTreeNodesToSchema } from '../../src/convert';
 
 export interface ISchemaEditorWidgetProps {

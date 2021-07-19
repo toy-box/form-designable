@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNodeIdProps, useTreeNode } from '@designable/react';
+import { useNodeIdProps, useTreeNode } from '@toy-box/form-designable-react';
 import { Droppable } from '../Droppable';
 
 export const DesignableObject: React.FC = (props) => {

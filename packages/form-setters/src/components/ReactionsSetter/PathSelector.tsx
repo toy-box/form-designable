@@ -1,6 +1,6 @@
 import React from 'react';
 import { TreeNode } from '@designable/core';
-import { useCurrentNode } from '@designable/react';
+import { useCurrentNode } from '@toy-box/form-designable-react';
 import { TreeSelectProps, TreeSelect } from 'antd';
 
 export interface IPathSelectorProps

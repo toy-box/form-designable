@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormPath } from '@formily/core';
 import { GlobalRegistry, TreeNode } from '@designable/core';
-import { useDesigner, useTreeNode } from '@designable/react';
+import { useDesigner, useTreeNode } from '@toy-box/form-designable-react';
 import {
   ArrayField,
   Field,

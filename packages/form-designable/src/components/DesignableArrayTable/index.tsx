@@ -2,7 +2,11 @@ import React from 'react';
 import { Table, TableProps } from 'antd';
 import { Droppable } from '../Droppable';
 import { TreeNode } from '@designable/core';
-import { useTreeNode, TreeNodeWidget, useNodeIdProps } from '@designable/react';
+import {
+  useTreeNode,
+  TreeNodeWidget,
+  useNodeIdProps,
+} from '@toy-box/form-designable-react';
 import { ArrayBase } from '@formily/antd';
 import { observer } from '@formily/react';
 import { LoadTemplate } from '../LoadTemplate';

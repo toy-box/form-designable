@@ -2,7 +2,11 @@ import React, { Fragment } from 'react';
 import { Tree, Button, TreeProps } from 'antd';
 import { uid } from '@formily/shared';
 import { observer } from '@formily/reactive-react';
-import { usePrefix, TextWidget, IconWidget } from '@designable/react';
+import {
+  usePrefix,
+  TextWidget,
+  IconWidget,
+} from '@toy-box/form-designable-react';
 import { Title } from './Title';
 import { Header } from './Header';
 import { traverseTree } from './shared';

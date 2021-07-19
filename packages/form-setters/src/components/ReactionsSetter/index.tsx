@@ -4,8 +4,8 @@ import { createForm, isVoidField } from '@formily/core';
 import { createSchemaField } from '@formily/react';
 import { GlobalRegistry } from '@designable/core';
 import { requestIdle } from '@designable/shared';
-import { usePrefix, TextWidget } from '@designable/react';
-import { MonacoInput } from '@designable/react-settings-form';
+import { usePrefix, TextWidget } from '@toy-box/form-designable-react';
+import { MonacoInput } from '@toy-box/form-settings';
 import {
   Form,
   ArrayTable,

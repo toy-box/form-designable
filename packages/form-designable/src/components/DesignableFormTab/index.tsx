@@ -2,7 +2,11 @@ import React, { Fragment, useState } from 'react';
 import { observer } from '@formily/react';
 import { Tabs } from 'antd';
 import { TabsProps, TabPaneProps } from 'antd/lib/tabs';
-import { useNodeIdProps, useTreeNode, TreeNodeWidget } from '@designable/react';
+import {
+  useNodeIdProps,
+  useTreeNode,
+  TreeNodeWidget,
+} from '@toy-box/form-designable-react';
 import { Droppable } from '../Droppable';
 import { TreeNode } from '@designable/core';
 import { LoadTemplate } from '../LoadTemplate';

@@ -2,7 +2,11 @@ import React, { Fragment, useState } from 'react';
 import { observer } from '@formily/react';
 import { Collapse } from 'antd';
 import { CollapseProps, CollapsePanelProps } from 'antd/lib/collapse';
-import { useTreeNode, useNodeIdProps, TreeNodeWidget } from '@designable/react';
+import {
+  useTreeNode,
+  useNodeIdProps,
+  TreeNodeWidget,
+} from '@toy-box/form-designable-react';
 import { toArr } from '@formily/shared';
 import { Droppable } from '../Droppable';
 import { TreeNode } from '@designable/core';

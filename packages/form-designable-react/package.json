@@ -1,0 +1,35 @@
+{
+  "name": "@toy-box/form-designable-react",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
+  },
+  "author": "wishgood@gmail.com",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 || >=17.0.0",
+    "@types/react-dom": ">=16.8.0 || >=17.0.0",
+    "antd": "^4.15.4",
+    "react": ">=16.8.0 || >=17.0.0",
+    "react-dom": ">=16.8.0",
+    "react-is": ">=16.8.0 || >=17.0.0"
+  },
+  "dependencies": {
+    "@designable/core": "0.4.11",
+    "@designable/shared": "0.4.11",
+    "@formily/reactive": "^2.0.0-beta.76",
+    "@formily/reactive-react": "^2.0.0-beta.76",
+    "@juggle/resize-observer": "^3.3.1"
+  }
+}
