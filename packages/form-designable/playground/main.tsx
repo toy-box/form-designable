@@ -47,6 +47,13 @@ GlobalRegistry.registerDesignerLocales({
 
 const Root = createDesignableForm({
   registryName: 'Root',
+  defaultProps: {
+    labelCol: 6,
+    wrapperCol: 12,
+    style: {
+      padding: '16px 16px 16px 16px',
+    },
+  },
 });
 
 const DesignableField = createDesignableField({
@@ -97,9 +104,6 @@ const App = () => {
                   <SchemaEditorWidget tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
-              {/* <ViewPanel type="MARKUP" scrollable={false}>
-                {(tree) => <MarkupSchemaWidget tree={tree} />}
-              </ViewPanel> */}
               <ViewPanel type="PREVIEW">
                 {(tree) => <PreviewWidget tree={tree} />}
               </ViewPanel>
