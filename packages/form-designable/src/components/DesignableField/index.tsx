@@ -11,7 +11,7 @@ import {
   Schema,
   ISchema,
 } from '@formily/react';
-import { FormTab, FormCollapse } from '@formily/antd';
+import { FormTab, FormCollapse, FormItem } from '@formily/antd';
 import { clone } from '@formily/shared';
 import { FormItemSwitcher } from '../FormItemSwitcher';
 import { DesignableObject } from '../DesignableObject';
@@ -31,193 +31,194 @@ function pick(props: any, keys: string[] = []) {
 
 export const createDesignableField = (options: IDesignableFieldProps) => {
   const realOptions = createOptions(options);
-  const tabs = {};
-  const collapses = {};
+  // const tabs = {};
+  // const collapses = {};
   const getFieldPropsSchema = (node: TreeNode): ISchema => {
-    const decorator = node.props['x-decorator'];
-    const component = node.props['x-component'];
-    const decoratorSchema =
-      decorator &&
-      (FormPath.getIn(realOptions.componentsPropsSchema, decorator) ||
-        FormPath.getIn(defaultSchemas, decorator));
-    const componentSchema =
-      component &&
-      (FormPath.getIn(realOptions.componentsPropsSchema, component) ||
-        FormPath.getIn(defaultSchemas, component));
-    const CollapseSchema = (key: string, schema: ISchema) => {
-      collapses[key] = collapses[key] || FormCollapse.createFormCollapse();
-      return {
-        type: 'object',
-        properties: {
-          collapse: {
-            type: 'void',
-            'x-component': 'FormCollapse',
-            'x-components-props': {
-              formCollapse: collapses[key],
-            },
-            properties: {
-              panelProperty: {
-                type: 'void',
-                'x-component': 'FormCollapse.CollapsePanel',
-                'x-component-props': {
-                  header: GlobalRegistry.getDesignerMessage(
-                    `settings.${key}.tab_property`,
-                  ),
-                },
-                properties: schema.properties,
-              },
-              panelStyle: {
-                type: 'void',
-                'x-component': 'FormCollapse.CollapsePanel',
-                'x-component-props': {
-                  header: GlobalRegistry.getDesignerMessage(
-                    `settings.${key}.tab_style`,
-                  ),
-                },
-                properties: defaultSchemas.CSSStyle,
-              },
-            },
-          },
-        },
-      };
-    };
-    const TabSchema = (key: string, schema: ISchema) => {
-      tabs[key] = tabs[key] || FormTab.createFormTab();
-      return {
-        type: 'object',
-        properties: {
-          propsTab: {
-            type: 'void',
-            'x-component': 'FormTab',
-            'x-component-props': {
-              formTab: tabs[key],
-              style: {
-                overflow: 'visible',
-              },
-            },
-            properties: {
-              propsPane: {
-                type: 'void',
-                'x-component': 'FormTab.TabPane',
-                'x-component-props': {
-                  tab: GlobalRegistry.getDesignerMessage(
-                    `settings.${key}.tab_property`,
-                  ),
-                },
-                properties: schema.properties,
-              },
-              stylePane: {
-                type: 'void',
-                'x-component': 'FormTab.TabPane',
-                'x-component-props': {
-                  tab: GlobalRegistry.getDesignerMessage(
-                    `settings.${key}.tab_style`,
-                  ),
-                },
-                properties: {
-                  style: defaultSchemas.CSSStyle,
-                },
-              },
-            },
-          },
-        },
-      };
-    };
+    return FormPath.getIn(defaultSchemas, node.props.component);
+    // const decorator = node.props['x-decorator'];
+    // const component = node.props['x-component'];
+    // const decoratorSchema =
+    //   decorator &&
+    //   (FormPath.getIn(realOptions.componentsPropsSchema, decorator) ||
+    //     FormPath.getIn(defaultSchemas, decorator));
+    // const componentSchema =
+    //   component &&
+    //   (FormPath.getIn(realOptions.componentsPropsSchema, component) ||
+    //     FormPath.getIn(defaultSchemas, component));
+    // const CollapseSchema = (key: string, schema: ISchema) => {
+    //   collapses[key] = collapses[key] || FormCollapse.createFormCollapse();
+    //   return {
+    //     type: 'object',
+    //     properties: {
+    //       collapse: {
+    //         type: 'void',
+    //         'x-component': 'FormCollapse',
+    //         'x-components-props': {
+    //           formCollapse: collapses[key],
+    //         },
+    //         properties: {
+    //           panelProperty: {
+    //             type: 'void',
+    //             'x-component': 'FormCollapse.CollapsePanel',
+    //             'x-component-props': {
+    //               header: GlobalRegistry.getDesignerMessage(
+    //                 `settings.${key}.tab_property`,
+    //               ),
+    //             },
+    //             properties: schema.properties,
+    //           },
+    //           panelStyle: {
+    //             type: 'void',
+    //             'x-component': 'FormCollapse.CollapsePanel',
+    //             'x-component-props': {
+    //               header: GlobalRegistry.getDesignerMessage(
+    //                 `settings.${key}.tab_style`,
+    //               ),
+    //             },
+    //             properties: defaultSchemas.CSSStyle,
+    //           },
+    //         },
+    //       },
+    //     },
+    //   };
+    // };
+    // const TabSchema = (key: string, schema: ISchema) => {
+    //   tabs[key] = tabs[key] || FormTab.createFormTab();
+    //   return {
+    //     type: 'object',
+    //     properties: {
+    //       propsTab: {
+    //         type: 'void',
+    //         'x-component': 'FormTab',
+    //         'x-component-props': {
+    //           formTab: tabs[key],
+    //           style: {
+    //             overflow: 'visible',
+    //           },
+    //         },
+    //         properties: {
+    //           propsPane: {
+    //             type: 'void',
+    //             'x-component': 'FormTab.TabPane',
+    //             'x-component-props': {
+    //               tab: GlobalRegistry.getDesignerMessage(
+    //                 `settings.${key}.tab_property`,
+    //               ),
+    //             },
+    //             properties: schema.properties,
+    //           },
+    //           stylePane: {
+    //             type: 'void',
+    //             'x-component': 'FormTab.TabPane',
+    //             'x-component-props': {
+    //               tab: GlobalRegistry.getDesignerMessage(
+    //                 `settings.${key}.tab_style`,
+    //               ),
+    //             },
+    //             properties: {
+    //               style: defaultSchemas.CSSStyle,
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   };
+    // };
 
-    const base = {
-      type: 'object',
-      properties: {
-        key: {
-          type: 'string',
-          'x-decorator': 'FormItem',
-          'x-component': 'Input',
-          'x-index': 0,
-        },
-        name: {
-          type: 'string',
-          'x-decorator': 'FormItem',
-          'x-component': 'Input',
-          'x-index': 1,
-        },
-        description: {
-          type: 'string',
-          'x-decorator': 'FormItem',
-          'x-component': 'Input.TextArea',
-          'x-index': 2,
-        },
-        defaultValue: {
-          'x-decorator': 'FormItem',
-          'x-component': 'ValueInput',
-          'x-index': 3,
-        },
-        'x-display': {
-          type: 'string',
-          enum: ['visible', 'hidden', 'none', ''],
-          'x-decorator': 'FormItem',
-          'x-component': 'Select',
-          'x-component-props': {
-            defaultValue: 'visible',
-          },
-          'x-index': 10,
-        },
-        'x-pattern': {
-          type: 'string',
-          enum: ['editable', 'disabled', 'readOnly', 'readPretty', ''],
-          'x-decorator': 'FormItem',
-          'x-component': 'Select',
-          'x-component-props': {
-            defaultValue: 'editable',
-          },
-          'x-index': 11,
-        },
-      },
-    };
+    // const base = {
+    //   type: 'object',
+    //   properties: {
+    //     key: {
+    //       type: 'string',
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Input',
+    //       'x-index': 0,
+    //     },
+    //     name: {
+    //       type: 'string',
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Input',
+    //       'x-index': 1,
+    //     },
+    //     description: {
+    //       type: 'string',
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Input.TextArea',
+    //       'x-index': 2,
+    //     },
+    //     defaultValue: {
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'ValueInput',
+    //       'x-index': 3,
+    //     },
+    //     'x-display': {
+    //       type: 'string',
+    //       enum: ['visible', 'hidden', 'none', ''],
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Select',
+    //       'x-component-props': {
+    //         defaultValue: 'visible',
+    //       },
+    //       'x-index': 10,
+    //     },
+    //     'x-pattern': {
+    //       type: 'string',
+    //       enum: ['editable', 'disabled', 'readOnly', 'readPretty', ''],
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Select',
+    //       'x-component-props': {
+    //         defaultValue: 'editable',
+    //       },
+    //       'x-index': 11,
+    //     },
+    //   },
+    // };
 
-    const container = {
-      type: 'object',
-      properties: {
-        'x-component-props':
-          componentSchema && TabSchema('x-component-props', componentSchema),
-      },
-    };
+    // const container = {
+    //   type: 'object',
+    //   properties: {
+    //     'x-component-props':
+    //       componentSchema && TabSchema('x-component-props', componentSchema),
+    //   },
+    // };
 
-    if (node.props.type === 'void') {
-      if (!includesComponent(node, realOptions.dropReactionComponents)) {
-        Object.assign(base.properties, container.properties, {
-          'x-reactions': {
-            'x-decorator': 'FormItem',
-            'x-index': 10,
-            'x-component': 'ReactionsSetter',
-          },
-        });
-      }
-      if (!includesComponent(node, realOptions.dropFormItemComponents)) {
-        Object.assign(base.properties, container.properties);
-      }
-      delete base.properties.name;
-      delete base.properties.defaultValue;
-      delete base.properties.description;
-    } else {
-      if (!includesComponent(node, realOptions.dropReactionComponents)) {
-        Object.assign(base.properties, componentSchema?.properties || {}, {
-          'x-reactions': {
-            'x-decorator': 'FormItem',
-            'x-index': 12,
-            'x-component': 'ReactionsSetter',
-          },
-        });
-      }
-      Object.assign(base.properties, componentSchema?.properties || {}, {
-        required: {
-          type: 'boolean',
-          'x-decorator': 'FormItem',
-          'x-component': 'Switch',
-          'x-index': 13,
-        },
-      });
-    }
+    // if (node.props.type === 'void') {
+    //   if (!includesComponent(node, realOptions.dropReactionComponents)) {
+    //     Object.assign(base.properties, container.properties, {
+    //       'x-reactions': {
+    //         'x-decorator': 'FormItem',
+    //         'x-index': 10,
+    //         'x-component': 'ReactionsSetter',
+    //       },
+    //     });
+    //   }
+    //   if (!includesComponent(node, realOptions.dropFormItemComponents)) {
+    //     Object.assign(base.properties, container.properties);
+    //   }
+    //   delete base.properties.name;
+    //   delete base.properties.defaultValue;
+    //   delete base.properties.description;
+    // } else {
+    //   if (!includesComponent(node, realOptions.dropReactionComponents)) {
+    //     Object.assign(base.properties, componentSchema?.properties || {}, {
+    //       'x-reactions': {
+    //         'x-decorator': 'FormItem',
+    //         'x-index': 12,
+    //         'x-component': 'ReactionsSetter',
+    //       },
+    //     });
+    //   }
+    //   Object.assign(base.properties, componentSchema?.properties || {}, {
+    //     required: {
+    //       type: 'boolean',
+    //       'x-decorator': 'FormItem',
+    //       'x-component': 'Switch',
+    //       'x-index': 13,
+    //     },
+    //   });
+    // }
 
-    return base;
+    // return base;
   };
 
   const calculateRestricts = (target: TreeNode, source: TreeNode[]) => {
@@ -241,7 +242,7 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
 
   GlobalRegistry.registerDesignerProps({
     [realOptions.registryName]: (node) => {
-      const componentName = node.props?.['x-component'];
+      const componentName = node.props?.['component'];
       const message = GlobalRegistry.getDesignerMessage(
         `components.${componentName}`,
       );
@@ -364,9 +365,14 @@ export const createDesignableField = (options: IDesignableFieldProps) => {
       'index',
       'defaultValue',
     ]);
+    console.log('props', props);
     fieldProps.component[1] = Object.assign(fieldProps.component[1] || {}, {
       field: fieldMeta,
     });
+    fieldProps.decorator[1] = Object.assign(fieldProps.decorator[1] || {}, {
+      style: { width: props['x-width'] },
+    });
+    console.log('fieldProps', fieldProps);
     return (
       <Field
         {...fieldProps}

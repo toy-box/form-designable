@@ -6,17 +6,17 @@ import { FieldModeType } from '@toy-box/meta-components';
 import { TreeNode } from '@designable/core';
 import { IMetaSchema } from './types';
 
-export const makeComponent = (target) => {
-  return connect(
-    target,
-    mapProps((props, field) => {
-      return {
-        ...props,
-        mode: field.readPretty ? 'read' : ('edit' as FieldModeType),
-      };
-    }),
-  );
-};
+// export const makeComponent = (target) => {
+//   return connect(
+//     target,
+//     mapProps((props, field) => {
+//       return {
+//         ...props,
+//         mode: field.readPretty ? 'read' : ('edit' as FieldModeType),
+//       };
+//     }),
+//   );
+// };
 
 export const convertFormilyField2IFieldMeta = (
   schema: ISchema,

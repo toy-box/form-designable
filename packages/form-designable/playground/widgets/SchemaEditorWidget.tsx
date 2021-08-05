@@ -19,11 +19,11 @@ export const SchemaEditorWidget: React.FC<ISchemaEditorWidgetProps> = (
   return (
     <MonacoInput
       {...props}
-      value={JSON.stringify(
-        convertTreeNodesToSchema(props.tree, Parser),
-        null,
-        2,
-      )}
+      // value={JSON.stringify(
+      //   convertTreeNodesToSchema(props.tree, Parser),
+      //   null,
+      //   2,
+      // )}
       onChange={(value) => {
         // TODO:
         // props.onChange?.(transformToTreeNode(JSON.parse(value), Parser))

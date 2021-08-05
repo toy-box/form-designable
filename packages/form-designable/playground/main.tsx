@@ -104,9 +104,9 @@ const App = () => {
                   <SchemaEditorWidget tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
-              <ViewPanel type="PREVIEW">
+              {/* <ViewPanel type="PREVIEW">
                 {(tree) => <PreviewWidget tree={tree} />}
-              </ViewPanel>
+              </ViewPanel> */}
             </ViewportPanel>
           </WorkspacePanel>
         </Workspace>

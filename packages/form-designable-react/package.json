@@ -27,10 +27,10 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "0.4.11",
-    "@designable/shared": "0.4.11",
-    "@formily/reactive": "^2.0.0-beta.76",
-    "@formily/reactive-react": "^2.0.0-beta.76",
+    "@designable/core": "0.4.25",
+    "@designable/shared": "0.4.25",
+    "@formily/reactive": "^2.0.0-beta.77",
+    "@formily/reactive-react": "^2.0.0-beta.77",
     "@juggle/resize-observer": "^3.3.1"
   }
 }
