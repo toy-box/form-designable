@@ -48,8 +48,9 @@ GlobalRegistry.registerDesignerLocales({
 const Root = createDesignableForm({
   registryName: 'Root',
   defaultProps: {
-    labelCol: 6,
-    wrapperCol: 12,
+    labelCol: 12,
+    wrapperCol: 24,
+    layout: 'vertical',
     style: {
       padding: '16px 16px 16px 16px',
     },

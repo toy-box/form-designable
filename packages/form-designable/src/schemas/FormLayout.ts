@@ -13,40 +13,14 @@ export const FormLayout: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'NumberPicker',
     },
-    labelWidth: {
+    colon: {
+      type: 'boolean',
       'x-decorator': 'FormItem',
-      'x-component': 'SizeInput',
+      'x-component': 'Switch',
+      'x-component-props': {
+        defaultChecked: true,
+      },
     },
-    wrapperWidth: {
-      'x-decorator': 'FormItem',
-      'x-component': 'SizeInput',
-    },
-    // colon: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    //   'x-component-props': {
-    //     defaultChecked: true,
-    //   },
-    // },
-    // feedbackLayout: {
-    //   type: 'string',
-    //   enum: ['loose', 'terse', 'popover', 'none', null],
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Select',
-    //   'x-component-props': {
-    //     defaultValue: 'loose',
-    //   },
-    // },
-    // size: {
-    //   type: 'string',
-    //   enum: ['large', 'small', 'default', null],
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Select',
-    //   'x-component-props': {
-    //     defaultValue: 'default',
-    //   },
-    // },
     layout: {
       type: 'string',
       enum: ['vertical', 'horizontal', 'inline', null],
@@ -83,42 +57,5 @@ export const FormLayout: ISchema = {
         defaultValue: 'left',
       },
     },
-    // labelWrap: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    // },
-    // wrapperWrap: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    // },
-
-    // fullness: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    // },
-    // inset: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    // },
-    // shallow: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    //   'x-component-props': {
-    //     defaultChecked: true,
-    //   },
-    // },
-    // bordered: {
-    //   type: 'boolean',
-    //   'x-decorator': 'FormItem',
-    //   'x-component': 'Switch',
-    //   'x-component-props': {
-    //     defaultChecked: true,
-    //   },
-    // },
   },
 };

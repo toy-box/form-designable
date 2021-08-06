@@ -26,5 +26,42 @@ export const FieldBoolean: ISchema = {
       'x-component': 'Switch',
       'x-index': 3,
     },
+    'x-width': {
+      type: 'number',
+      enum: [
+        {
+          label: '1/4',
+          value: '25%',
+        },
+        {
+          label: '1/3',
+          value: '33.33%',
+        },
+        {
+          label: '1/2',
+          value: '50%',
+        },
+        {
+          label: '2/3',
+          value: '66.66%',
+        },
+        {
+          label: '3/4',
+          value: '75%',
+        },
+        {
+          label: '1/1',
+          value: '100%',
+        },
+      ],
+      default: '33.33%',
+      'x-decorator': 'FormItem',
+      'x-component': 'Radio.Group',
+      'x-component-props': {
+        optionType: 'button',
+        buttonStyle: 'solid',
+      },
+      'x-index': 4,
+    },
   },
 };

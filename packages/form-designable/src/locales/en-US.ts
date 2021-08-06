@@ -346,6 +346,7 @@ const FieldLocale = {
   defaultValue: 'Default',
   options: 'Options',
   style: StyleLocale,
+  'x-width': 'Width',
   'x-display': {
     title: 'Display State',
     tooltip:
@@ -438,6 +439,7 @@ export default {
       FieldDate: 'Date',
       FieldDatetime: 'Datetime',
       FieldSingleOption: 'Select',
+      FieldRow: 'Row',
       Segment: 'Segment',
     },
     Settings: {

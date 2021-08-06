@@ -341,6 +341,7 @@ const FieldLocale = {
   options: '备选项',
   format: '格式',
   style: StyleLocale,
+  'x-width': '宽度',
   'x-display': {
     title: '展示状态',
     tooltip: '半隐藏只会隐藏UI，全隐藏会删除数据',
@@ -432,6 +433,7 @@ export default {
       FieldDate: '日期',
       FieldDatetime: '日期时间',
       FieldSingleOption: '单选',
+      FieldRow: '行',
       Segment: '区块',
     },
     Settings: {

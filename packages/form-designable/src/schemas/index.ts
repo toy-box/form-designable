@@ -32,4 +32,5 @@ export * from './FieldBoolean';
 export * from './FieldNumber';
 export * from './FieldPercent';
 export * from './FieldSingleOption';
+export * from './FieldRow';
 export * from './Segment';

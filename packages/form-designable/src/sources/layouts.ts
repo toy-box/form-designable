@@ -5,16 +5,6 @@ GlobalDragSource.appendSourcesByGroup('layouts', [
     componentName: 'DesignableField',
     props: {
       type: 'void',
-      'x-component': 'Card',
-      'x-component-props': {
-        title: 'Title',
-      },
-    },
-  },
-  {
-    componentName: 'DesignableField',
-    props: {
-      type: 'void',
       'x-component': 'Segment',
       'x-component-props': {
         title: 'Segment',
@@ -32,14 +22,7 @@ GlobalDragSource.appendSourcesByGroup('layouts', [
     componentName: 'DesignableField',
     props: {
       type: 'void',
-      'x-component': 'FormLayout',
-    },
-  },
-  {
-    componentName: 'DesignableField',
-    props: {
-      type: 'void',
-      'x-component': 'Space',
+      'x-component': 'FieldRow',
     },
   },
   {

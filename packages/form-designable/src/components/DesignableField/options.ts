@@ -22,7 +22,7 @@ import {
   FormGrid,
   FormLayout,
 } from '@formily/antd';
-import { Segment } from '@toy-box/toybox-ui';
+import { Segment, FieldRow } from '@toy-box/toybox-ui';
 import {
   FieldString,
   FieldText,
@@ -38,8 +38,8 @@ import { createDesignableContainer } from '../DesignableContainer';
 import { DesignableFormTab } from '../DesignableFormTab';
 import { DesignableFormCollapse } from '../DesignableFormCollapse';
 import { DesignableArrayTable } from '../DesignableArrayTable';
+import { DesignableMetaTable } from '../DesignableMetaTable';
 import { DesignableArrayCards } from '../DesignableArrayCards';
-import { makeComponent } from '../../convert';
 
 const isChildrenComponents =
   (parentName: string, names?: string[]) => (name: string) =>
@@ -126,7 +126,7 @@ export const createOptions = (
       FormLayout: createDesignableContainer(FormLayout),
       FormTab: DesignableFormTab,
       FormCollapse: DesignableFormCollapse,
-      ArrayTable: DesignableArrayTable,
+      ArrayTable: DesignableMetaTable,
       ArrayCards: DesignableArrayCards,
       FormItem,
       DatePicker,
@@ -159,6 +159,7 @@ export const createOptions = (
       FieldSingleOption: FieldSelect,
       FieldPercent: FieldPercent,
       Segment,
+      FieldRow,
     },
   };
 };

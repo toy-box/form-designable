@@ -2,6 +2,7 @@
   "version": "0.4.11",
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "packages": ["packages/*"],
   "npmClientArgs": ["--ignore-engines"],
   "command": {
     "version": {

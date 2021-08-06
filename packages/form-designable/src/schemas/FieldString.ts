@@ -73,13 +73,14 @@ export const FieldString: ISchema = {
           value: '100%',
         },
       ],
+      default: '33.33%',
       'x-decorator': 'FormItem',
       'x-component': 'Radio.Group',
       'x-component-props': {
         optionType: 'button',
         buttonStyle: 'solid',
       },
-      'x-index': 3,
+      'x-index': 5,
     },
   },
 };
