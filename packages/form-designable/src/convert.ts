@@ -1,22 +1,10 @@
 import React from 'react';
-import { ISchema, connect, mapProps } from '@formily/react';
+import { ISchema } from '@formily/react';
 import { IFieldMeta, IFieldOption, MetaValueType } from '@toy-box/meta-schema';
 import { pick, clone } from '@toy-box/toybox-shared';
-import { FieldModeType } from '@toy-box/meta-components';
 import { TreeNode } from '@designable/core';
 import { IMetaSchema } from './types';
-
-// export const makeComponent = (target) => {
-//   return connect(
-//     target,
-//     mapProps((props, field) => {
-//       return {
-//         ...props,
-//         mode: field.readPretty ? 'read' : ('edit' as FieldModeType),
-//       };
-//     }),
-//   );
-// };
+import { uid } from '@formily/shared';
 
 export const convertFormilyField2IFieldMeta = (
   schema: ISchema,
@@ -172,7 +160,13 @@ const convertType = (type: MetaValueType | string) => {
   }
 };
 
-const mapProperties = (properties: Record<string, IMetaSchema>) => {
+const mapProperties = (
+  properties: Record<string, IMetaSchema>,
+  type: string,
+) => {
+  if (type === 'array') {
+    return makeTableProperties(properties);
+  }
   const props: Record<string, ISchema> = {};
   Object.keys(properties).forEach((key) => {
     props[key] = converSchemaToFormily(properties[key]);
@@ -180,6 +174,34 @@ const mapProperties = (properties: Record<string, IMetaSchema>) => {
   return props;
 };
 
+const makeTableProperties = (properties: Record<string, IMetaSchema>) => {
+  const props: Record<string, ISchema> = {};
+  Object.keys(properties).forEach((key) => {
+    props[key] = makeColumn(properties[key]);
+  });
+  return props;
+};
+
+const makeColumn = (metaSchema: IMetaSchema) => {
+  return {
+    type: 'void',
+    properties: {
+      [metaSchema.key]: {
+        type: convertType(metaSchema.type),
+        'x-component': metaSchema['x-component'],
+        'x-decorator': 'FormItem',
+        'x-index': 0,
+      },
+    },
+    'x-component': 'ArrayTable.Column',
+    'x-component-props': {
+      title: metaSchema.name,
+    },
+    'x-index': metaSchema['x-index'],
+  };
+};
+
+/** 将Toybox Schema 转为 Formily 的Schema */
 export const converSchemaToFormily = (schema: IMetaSchema) => {
   const {
     key,
@@ -228,27 +250,36 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
     'items',
     'index',
     'defaultValue',
+    'x-component',
+    'x-decorator',
+    'x-component-props',
+    'x-decorator-props',
   ]);
+  const xcomponentProps = Object.assign(
+    {
+      ...componentsProps,
+    },
+    ['void', 'array', 'object'].includes(type) ? {} : { field },
+  );
   return {
     ...others,
     name: key,
     title: name,
     default: defaultValue,
     type: convertType(type),
-    properties: properties ? mapProperties(properties) : undefined,
+    properties: properties
+      ? mapProperties(properties, convertType(type))
+      : undefined,
     items: items
       ? {
           type: items.type,
           properties: items.properties
-            ? mapProperties(items.properties)
+            ? mapProperties(items.properties, convertType(type))
             : undefined,
         }
       : undefined,
     enum: options,
-    ['x-component-props']: {
-      ...componentsProps,
-      field,
-    },
+    ['x-component-props']: xcomponentProps,
   };
 };
 

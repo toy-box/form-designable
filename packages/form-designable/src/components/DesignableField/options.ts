@@ -159,7 +159,7 @@ export const createOptions = (
       FieldSingleOption: FieldSelect,
       FieldPercent: FieldPercent,
       Segment,
-      FieldRow,
+      FieldRow: createDesignableContainer(FieldRow),
     },
   };
 };
