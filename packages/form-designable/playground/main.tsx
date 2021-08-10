@@ -105,18 +105,9 @@ const App = () => {
                   <SchemaEditorWidget tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
-              <ViewPanel type="PREVIEW" scrollable={false}>
-                {(tree, onChange) => (
-                  <SchemaEditorWidget
-                    mode="formily"
-                    tree={tree}
-                    onChange={onChange}
-                  />
-                )}
-              </ViewPanel>
-              {/* <ViewPanel type="PREVIEW">
+              <ViewPanel type="PREVIEW">
                 {(tree) => <PreviewWidget tree={tree} />}
-              </ViewPanel> */}
+              </ViewPanel>
             </ViewportPanel>
           </WorkspacePanel>
         </Workspace>

@@ -183,6 +183,38 @@ const makeTableProperties = (properties: Record<string, IMetaSchema>) => {
 };
 
 const makeColumn = (metaSchema: IMetaSchema) => {
+  const field = pick(metaSchema, [
+    'key',
+    'name',
+    'type',
+    'description',
+    'primary',
+    'options',
+    'refObjectId',
+    'unique',
+    'required',
+    'maximum',
+    'minimum',
+    'exclusiveMaximum',
+    'exclusiveMinimum',
+    'maxLength',
+    'minLength',
+    'precision',
+    'multipleOf',
+    'minProperties',
+    'maxProperties',
+    'maxItems',
+    'minItems',
+    'uniqueItems',
+    'pattern',
+    'format',
+    'titleKey',
+    'primaryKey',
+    'parentKey',
+    'index',
+    'defaultValue',
+  ]);
+
   return {
     type: 'void',
     properties: {
@@ -190,6 +222,9 @@ const makeColumn = (metaSchema: IMetaSchema) => {
         type: convertType(metaSchema.type),
         'x-component': metaSchema['x-component'],
         'x-decorator': 'FormItem',
+        'xcomponent-props': {
+          field,
+        },
         'x-index': 0,
       },
     },
@@ -246,14 +281,8 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
     'titleKey',
     'primaryKey',
     'parentKey',
-    'properties',
-    'items',
     'index',
     'defaultValue',
-    'x-component',
-    'x-decorator',
-    'x-component-props',
-    'x-decorator-props',
   ]);
   const xcomponentProps = Object.assign(
     {
@@ -261,6 +290,12 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
     },
     ['void', 'array', 'object'].includes(type) ? {} : { field },
   );
+
+  const decoratorProps = Object.assign(
+    clone(schema['x-decorator-props'] || {}),
+    schema['x-width'] ? { style: { width: schema['x-width'] } } : {},
+  );
+
   return {
     ...others,
     name: key,
@@ -280,6 +315,7 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
       : undefined,
     enum: options,
     ['x-component-props']: xcomponentProps,
+    ['x-decorator-props']: decoratorProps,
   };
 };
 
