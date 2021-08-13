@@ -45,6 +45,10 @@ export const FieldString: ISchema = {
       },
       'x-index': 4,
     },
+    formula: {
+      type: 'string',
+      'x-component': 'FormulaSetter',
+    },
     'x-width': {
       type: 'number',
       enum: [

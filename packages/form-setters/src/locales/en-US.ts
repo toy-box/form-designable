@@ -46,6 +46,9 @@ export default {
         pleaseSelect: 'Please Select',
         expressionValueTypeIs: 'Expression value type is',
       },
+      FormulaSetter: {
+        configureFormula: 'Configure',
+      },
     },
   },
 };

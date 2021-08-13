@@ -26,7 +26,11 @@ import {
   PreviewWidget,
   SchemaEditorWidget,
 } from './widgets';
-import { DataSourceSetter, ReactionsSetter } from '@toy-box/form-setters';
+import {
+  DataSourceSetter,
+  ReactionsSetter,
+  FormulaSetter,
+} from '@toy-box/form-setters';
 import 'antd/dist/antd.less';
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
@@ -113,7 +117,7 @@ const App = () => {
         </Workspace>
         <SettingsPanel title="panels.PropertySettings">
           <SettingsForm
-            components={{ DataSourceSetter, ReactionsSetter }}
+            components={{ DataSourceSetter, ReactionsSetter, FormulaSetter }}
             uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           />
         </SettingsPanel>

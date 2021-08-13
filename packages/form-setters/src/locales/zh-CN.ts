@@ -44,6 +44,9 @@ export default {
         pleaseSelect: '请选择',
         expressionValueTypeIs: '表达式值类型为',
       },
+      FormulaSetter: {
+        configureFormula: '配置公式',
+      },
     },
   },
 };

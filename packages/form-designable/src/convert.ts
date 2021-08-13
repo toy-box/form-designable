@@ -4,7 +4,6 @@ import { IFieldMeta, IFieldOption, MetaValueType } from '@toy-box/meta-schema';
 import { pick, clone } from '@toy-box/toybox-shared';
 import { TreeNode } from '@designable/core';
 import { IMetaSchema } from './types';
-import { uid } from '@formily/shared';
 
 export const convertFormilyField2IFieldMeta = (
   schema: ISchema,
