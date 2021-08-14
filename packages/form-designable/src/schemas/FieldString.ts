@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/react';
+import { convertTreeNodesToFormily } from '../convert';
 
 export const FieldString: ISchema = {
   type: 'object',
@@ -48,6 +49,9 @@ export const FieldString: ISchema = {
     formula: {
       type: 'string',
       'x-component': 'FormulaSetter',
+      'x-component-props': {
+        convert: convertTreeNodesToFormily,
+      },
     },
     'x-width': {
       type: 'number',

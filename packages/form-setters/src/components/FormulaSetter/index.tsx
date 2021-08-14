@@ -13,12 +13,16 @@ import 'codemirror/lib/codemirror.css';
 import { TreeNode } from '@designable/core';
 import { ISchema } from '@formily/react';
 
+type FormSchema = {
+  form: Record<string, any>;
+  schema: ISchema;
+};
 export interface IFormulaSetterProps {
   className?: string;
   style?: React.CSSProperties;
   onChange: (formula: string) => void;
   value: string;
-  convert: (tree: TreeNode) => ISchema;
+  convert: (tree: TreeNode, option?: any) => FormSchema;
 }
 
 export const FormulaSetter: React.FC<IFormulaSetterProps> = observer(
@@ -28,7 +32,14 @@ export const FormulaSetter: React.FC<IFormulaSetterProps> = observer(
     const theme = useTheme();
     const prefix = usePrefix('formula-setter');
     const [modalVisible, setModalVisible] = useState(false);
-    const schema = useMemo(() => convert(tree), [tree]);
+    const { schema } = useMemo(
+      () =>
+        convert(tree, {
+          designableFormName: 'Root',
+          designableFieldName: 'DesignableField',
+        }),
+      [tree],
+    );
     const openModal = () => setModalVisible(true);
     const closeModal = () => setModalVisible(false);
     const [formula, setFormula] = useState<string>();
