@@ -282,6 +282,7 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
     'parentKey',
     'index',
     'defaultValue',
+    'formula',
   ]);
   const xcomponentProps = Object.assign(
     {
@@ -315,6 +316,14 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
     enum: options,
     ['x-component-props']: xcomponentProps,
     ['x-decorator-props']: decoratorProps,
+    ['x-reactions']: field.formula
+      ? [
+          {
+            type: 'formula',
+            formula: field.formula,
+          },
+        ]
+      : [],
   };
 };
 

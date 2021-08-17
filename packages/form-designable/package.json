@@ -24,7 +24,13 @@
     "@types/react-dom": ">=16.8.0 || >=17.0.0",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0 || >=17.0.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
+    "react-is": ">=16.8.0 || >=17.0.0",
+    "@formily/antd": "2.0.0-beta.77",
+    "@formily/core": "2.0.0-beta.77",
+    "@formily/react": "2.0.0-beta.77",
+    "@formily/shared": "2.0.0-beta.77",
+    "@toy-box/form-designable-react": "^1.0.0",
+    "@toy-box/form-settings": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.0",
@@ -47,13 +53,9 @@
     "@designable/formily": "^0.4.25",
     "@designable/react": "^0.4.25",
     "@designable/react-settings-form": "^0.4.25",
-    "@formily/antd": "2.0.0-beta.77",
-    "@formily/core": "2.0.0-beta.77",
-    "@formily/react": "2.0.0-beta.77",
-    "@formily/shared": "2.0.0-beta.77",
     "@toy-box/meta-components": "^1.0.58",
     "@toy-box/toybox-ui": "^1.0.58",
-    "@toy-box/form-designable-react": "^1.0.0",
-    "@toy-box/form-settings": "^1.0.0"
+    "@toy-box/form-formula": "1.0.29",
+    "codemirror": "^5.62.2"
   }
 }

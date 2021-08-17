@@ -17,19 +17,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "antd": "^4.0.0"
-  },
   "peerDependencies": {
     "@types/react": ">=16.8.0 || >=17.0.0",
     "@types/react-dom": ">=16.8.0 || >=17.0.0",
     "antd": "^4.0.0",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
-  },
-  "dependencies": {
-    "@designable/core": "^0.4.25",
+    "react-is": ">=16.8.0 || >=17.0.0",
     "@designable/formily": "^0.4.25",
     "@designable/react": "^0.4.25",
     "@designable/react-settings-form": "^0.4.25",

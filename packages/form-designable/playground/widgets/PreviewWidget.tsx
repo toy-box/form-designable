@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { createForm } from '@formily/core';
-import { createSchemaField } from '@formily/react';
+import { createSchemaField, Schema } from '@formily/react';
 import {
   Form,
   FormItem,
@@ -41,6 +41,7 @@ import {
   FieldSelect,
 } from '@toy-box/meta-components';
 import { TreeNode } from '@designable/core';
+import { schemaPatch } from '@toy-box/form-formula';
 import { convertTreeNodesToFormily } from '../../src/convert';
 
 const SchemaField = createSchemaField({
@@ -92,6 +93,7 @@ export interface IPreviewWidgetProps {
 
 export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
   const form = useMemo(() => createForm(), []);
+  Schema.registerPatches(schemaPatch);
   const { form: formProps, schema } = convertTreeNodesToFormily(props.tree, {
     designableFormName: 'Root',
     designableFieldName: 'DesignableField',

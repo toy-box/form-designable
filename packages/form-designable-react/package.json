@@ -24,13 +24,13 @@
     "antd": "^4.15.4",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
-  },
-  "dependencies": {
+    "react-is": ">=16.8.0 || >=17.0.0",
     "@designable/core": "0.4.25",
     "@designable/shared": "0.4.25",
     "@formily/reactive": "^2.0.0-beta.77",
-    "@formily/reactive-react": "^2.0.0-beta.77",
+    "@formily/reactive-react": "^2.0.0-beta.77"
+  },
+  "dependencies": {
     "@juggle/resize-observer": "^3.3.1"
   }
 }
