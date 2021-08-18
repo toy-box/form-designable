@@ -5,6 +5,8 @@ import { pick, clone } from '@toy-box/toybox-shared';
 import { TreeNode } from '@designable/core';
 import { IMetaSchema } from './types';
 
+const COLUMN_PREFIX = 'column_prefix';
+
 export const convertFormilyField2IFieldMeta = (
   schema: ISchema,
   props: Record<string, any>,
@@ -114,7 +116,7 @@ export const convertTreeNodesToSchema = (
           node.children[0].componentName === realOptions.designableFieldName
         ) {
           schema.items = createSchema(node.children[0]);
-          schema['x-index'] = 0;
+          schema['x-index'] = node.index;
         }
       }
       node.children.slice(1).forEach((child, index) => {
@@ -122,7 +124,7 @@ export const convertTreeNodesToSchema = (
         const key = child.props?.key || child.id;
         schema.properties = schema.properties || {};
         schema.properties[key] = createSchema(child);
-        schema.properties[key]['x-index'] = index;
+        schema.properties[key]['x-index'] = child.index;
       });
     } else {
       node.children.forEach((child, index) => {
@@ -130,7 +132,7 @@ export const convertTreeNodesToSchema = (
         const key = child.props?.key || child.id;
         schema.properties = schema.properties || {};
         schema.properties[key] = createSchema(child);
-        schema.properties[key]['x-index'] = index;
+        schema.properties[key]['x-index'] = child.index;
       });
     }
     return schema;
@@ -186,14 +188,14 @@ const mapProperties = (
 const makeTableItems = (properties: Record<string, IMetaSchema>) => {
   const props: Record<string, ISchema> = {};
   Object.keys(properties).forEach((key) => {
-    props[key] = makeColumn(properties[key]);
+    props[`${COLUMN_PREFIX}_${key}`] = makeColumn(key, properties[key]);
   });
   return props;
 };
 
 const makeArrayTableProperties = () => {
   return {
-    add: {
+    addition: {
       type: 'void',
       'x-component': 'ArrayTable.Addition',
       title: '添加',
@@ -201,50 +203,52 @@ const makeArrayTableProperties = () => {
   };
 };
 
-const makeColumn = (metaSchema: IMetaSchema) => {
-  const field = pick(metaSchema, [
-    'key',
-    'name',
-    'type',
-    'description',
-    'primary',
-    'options',
-    'refObjectId',
-    'unique',
-    'required',
-    'maximum',
-    'minimum',
-    'exclusiveMaximum',
-    'exclusiveMinimum',
-    'maxLength',
-    'minLength',
-    'precision',
-    'multipleOf',
-    'minProperties',
-    'maxProperties',
-    'maxItems',
-    'minItems',
-    'uniqueItems',
-    'pattern',
-    'format',
-    'titleKey',
-    'primaryKey',
-    'parentKey',
-    'index',
-    'defaultValue',
-  ]);
+const makeColumn = (key: string, metaSchema: IMetaSchema) => {
+  const field = Object.assign(
+    pick(metaSchema, [
+      'name',
+      'type',
+      'description',
+      'primary',
+      'options',
+      'refObjectId',
+      'unique',
+      'required',
+      'maximum',
+      'minimum',
+      'exclusiveMaximum',
+      'exclusiveMinimum',
+      'maxLength',
+      'minLength',
+      'precision',
+      'multipleOf',
+      'minProperties',
+      'maxProperties',
+      'maxItems',
+      'minItems',
+      'uniqueItems',
+      'pattern',
+      'format',
+      'titleKey',
+      'primaryKey',
+      'parentKey',
+      'index',
+      'defaultValue',
+    ]),
+    { key },
+  );
 
   return {
     type: 'void',
     properties: {
-      [metaSchema.key]: {
+      [key]: {
         type: convertType(metaSchema.type),
+        title: metaSchema.name,
         'x-component': metaSchema['x-component'],
         'x-decorator': 'FormItem',
         'x-component-props': {
           field,
         },
-        'x-index': 0,
       },
     },
     'x-component': 'ArrayTable.Column',
@@ -344,70 +348,6 @@ export const converSchemaToFormily = (schema: IMetaSchema) => {
       : [],
   };
 };
-
-// export const makeTableColumn = (schema: IMetaSchema) => {
-//   const {
-//     key,
-//     name,
-//     defaultValue,
-//     type,
-//     options,
-//     titleKey,
-//     parentKey,
-//     refObjectId,
-//     items,
-//     index,
-//     properties,
-//     ['x-component-props']: componentsProps,
-//     ...others
-//   } = schema;
-//   const field = pick(schema, [
-//     'key',
-//     'name',
-//     'type',
-//     'description',
-//     'primary',
-//     'options',
-//     'refObjectId',
-//     'unique',
-//     'required',
-//     'maximum',
-//     'minimum',
-//     'exclusiveMaximum',
-//     'exclusiveMinimum',
-//     'maxLength',
-//     'minLength',
-//     'precision',
-//     'multipleOf',
-//     'minProperties',
-//     'maxProperties',
-//     'maxItems',
-//     'minItems',
-//     'uniqueItems',
-//     'pattern',
-//     'format',
-//     'titleKey',
-//     'primaryKey',
-//     'parentKey',
-//     'index',
-//     'defaultValue',
-//     'formula',
-//   ]);
-//   return {
-//     type: 'void',
-//     'x-component': 'ArrayTable.Column',
-//     'x-component-props': { title: schema.name },
-//     properties: {
-//       [schema.key]: {
-//         name: schema.key,
-//         type: convertType(schema.type),
-//         default: schema.defaultValue,
-//         'x-component': schema['x-component'],
-//         'x-component-props': { field },
-//       }
-//     }
-//   }
-// }
 
 export const convertTreeNodesToFormily = (
   node: TreeNode,

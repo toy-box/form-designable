@@ -3,34 +3,59 @@ import { ISchema } from '@formily/react';
 export const ArrayTable: ISchema & { Addition?: ISchema; Column?: ISchema } = {
   type: 'object',
   properties: {
-    bordered: {
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-      'x-component-props': {
-        defaultChecked: true,
-      },
-    },
-    showHeader: {
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-      'x-component-props': {
-        defaultChecked: true,
-      },
-    },
-    sticky: {
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-    },
-    size: {
+    key: {
       type: 'string',
-      enum: ['large', 'small', 'middle'],
       'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-component-props': {
-        defaultValue: 'small',
+      'x-component': 'Input',
+      'x-index': 0,
+    },
+    name: {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+      'x-index': 1,
+    },
+    description: {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input.TextArea',
+      'x-index': 2,
+    },
+    ['x-component-props']: {
+      type: 'object',
+      properties: {
+        bordered: {
+          type: 'boolean',
+          'x-decorator': 'FormItem',
+          'x-component': 'Switch',
+          'x-component-props': {
+            defaultChecked: true,
+          },
+          'x-index': 3,
+        },
+        showHeader: {
+          type: 'boolean',
+          'x-decorator': 'FormItem',
+          'x-component': 'Switch',
+          'x-component-props': {
+            defaultChecked: true,
+          },
+          'x-index': 4,
+        },
+        sticky: {
+          type: 'boolean',
+          'x-decorator': 'FormItem',
+          'x-component': 'Switch',
+        },
+        size: {
+          type: 'string',
+          enum: ['large', 'small', 'middle'],
+          'x-decorator': 'FormItem',
+          'x-component': 'Select',
+          'x-component-props': {
+            defaultValue: 'small',
+          },
+        },
       },
     },
   },

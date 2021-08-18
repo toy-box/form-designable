@@ -17,6 +17,7 @@ type FormSchema = {
   form: Record<string, any>;
   schema: ISchema;
 };
+
 export interface IFormulaSetterProps {
   className?: string;
   style?: React.CSSProperties;
