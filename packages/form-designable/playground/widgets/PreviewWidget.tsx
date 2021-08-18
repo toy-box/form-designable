@@ -99,8 +99,10 @@ export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
     designableFieldName: 'DesignableField',
   });
   return (
-    <Form {...formProps} form={form}>
-      <SchemaField schema={schema} />
-    </Form>
+    <>
+      <Form {...formProps} form={form}>
+        <SchemaField schema={schema} />
+      </Form>
+    </>
   );
 };

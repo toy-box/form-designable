@@ -106,7 +106,11 @@ const App = () => {
               </ViewPanel>
               <ViewPanel type="JSONTREE" scrollable={false}>
                 {(tree, onChange) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
+                  <SchemaEditorWidget
+                    mode="formily"
+                    tree={tree}
+                    onChange={onChange}
+                  />
                 )}
               </ViewPanel>
               <ViewPanel type="PREVIEW">
