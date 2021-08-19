@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/react';
+import { convertTreeNodesToFormily } from '../convert';
 
 export const FieldDate: ISchema = {
   type: 'object',
@@ -30,6 +31,14 @@ export const FieldDate: ISchema = {
         format: 'YYYY/MM/DD',
       },
       'x-index': 3,
+    },
+    formula: {
+      type: 'string',
+      'x-component': 'FormulaSetter',
+      'x-component-props': {
+        convert: convertTreeNodesToFormily,
+      },
+      'x-index': 4,
     },
     'x-width': {
       type: 'number',
@@ -66,7 +75,7 @@ export const FieldDate: ISchema = {
         optionType: 'button',
         buttonStyle: 'solid',
       },
-      'x-index': 4,
+      'x-index': 5,
     },
   },
 };

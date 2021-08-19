@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/react';
+import { convertTreeNodesToFormily } from '../convert';
 
 export const FieldBoolean: ISchema = {
   type: 'object',
@@ -25,6 +26,14 @@ export const FieldBoolean: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
       'x-index': 3,
+    },
+    formula: {
+      type: 'string',
+      'x-component': 'FormulaSetter',
+      'x-component-props': {
+        convert: convertTreeNodesToFormily,
+      },
+      'x-index': 4,
     },
     'x-width': {
       type: 'number',
@@ -61,7 +70,7 @@ export const FieldBoolean: ISchema = {
         optionType: 'button',
         buttonStyle: 'solid',
       },
-      'x-index': 4,
+      'x-index': 5,
     },
   },
 };

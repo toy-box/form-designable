@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/react';
+import { convertTreeNodesToFormily } from '../convert';
 
 export const FieldPercent: ISchema = {
   type: 'object',
@@ -31,6 +32,14 @@ export const FieldPercent: ISchema = {
           type: 'percent',
         },
       },
+    },
+    formula: {
+      type: 'string',
+      'x-component': 'FormulaSetter',
+      'x-component-props': {
+        convert: convertTreeNodesToFormily,
+      },
+      'x-index': 4,
     },
     'x-width': {
       type: 'number',
@@ -67,7 +76,7 @@ export const FieldPercent: ISchema = {
         optionType: 'button',
         buttonStyle: 'solid',
       },
-      'x-index': 4,
+      'x-index': 5,
     },
   },
 };

@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/react';
+import { Field } from '@formily/core/esm/models/Field';
 import { convertTreeNodesToFormily } from '../convert';
 
 export const FieldString: ISchema = {
@@ -52,6 +53,7 @@ export const FieldString: ISchema = {
       'x-component-props': {
         convert: convertTreeNodesToFormily,
       },
+      'x-index': 5,
     },
     'x-width': {
       type: 'number',
@@ -88,7 +90,7 @@ export const FieldString: ISchema = {
         optionType: 'button',
         buttonStyle: 'solid',
       },
-      'x-index': 5,
+      'x-index': 6,
     },
   },
 };
